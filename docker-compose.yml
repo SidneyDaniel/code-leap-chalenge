@@ -1,0 +1,40 @@
+services:
+  backend:
+    build: ./backend
+    container_name: codeleap_backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgres://postgres:[SENHA]@[HOST]:5432/postgres
+      - PYTHONUNBUFFERED=1
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./backend
+          target: /app
+          ignore:
+            - "__pycache__/"
+            - "*.pyc"
+
+  frontend:
+    build: ./frontend
+    container_name: codeleap_frontend
+    # O volume node_modules continua importante aqui
+    volumes:
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000/
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./frontend/package.json
+    command: npm run dev -- --host 0.0.0.0
