@@ -18,17 +18,3 @@ USER node
 EXPOSE 5173
 
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
-
-# import { defineConfig } from 'vite'
-# import react from '@vitejs/plugin-react'
-
-# export default defineConfig({
-#   plugins: [react()],
-#   server: {
-#     host: true, // Permite conexão externa
-#     port: 5173,
-#     watch: {
-#       usePolling: true, // Garante que o Docker perceba mudanças de arquivos no Linux
-#     },
-#   },
-# })

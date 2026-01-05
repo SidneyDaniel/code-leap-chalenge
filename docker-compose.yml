@@ -2,16 +2,16 @@ services:
   backend:
     build: ./backend
     container_name: codeleap_backend
-    volumes:
-      - ./backend:/app
+    # volumes:
+      # - ./backend:/app
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgres://postgres:[SENHA]@[HOST]:5432/postgres
+      - DATABASE_URL=${DATABASE_URL}
       - PYTHONUNBUFFERED=1
     develop:
       watch:
-        - action: sync+restart
+        - action: sync
           path: ./backend
           target: /app
           ignore:

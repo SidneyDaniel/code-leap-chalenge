@@ -1,3 +1,6 @@
+# Como executar o programa
+
+
 Execute o seguinte comando na raiz do seu projeto (onde está a pasta backend):
 
 
