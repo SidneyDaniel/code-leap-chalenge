@@ -1,3 +1,18 @@
+@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-codeleap-blue: #7695EC;
+  --color-codeleap-dark-blue: #5d7dcf;
+  --color-codeleap-black: #000000;
+  --color-codeleap-gray: #CCCCCC;
+  --color-codeleap-dark-gray: #777777;
+  --color-codeleap-light-gray: #DDDDDD;
+  --color-codeleap-red: #FF5151;
+  --color-codeleap-green: #47B845;
+  --color-codeleap-border: #777777;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -5,7 +20,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,6 +40,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  justify-content: center;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
