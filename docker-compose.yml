@@ -2,8 +2,6 @@ services:
   backend:
     build: ./backend
     container_name: codeleap_backend
-    # volumes:
-      # - ./backend:/app
     ports:
       - "8000:8000"
     env_file:
@@ -26,7 +24,6 @@ services:
   frontend:
     build: ./frontend
     container_name: codeleap_frontend
-    # O volume node_modules continua importante aqui
     volumes:
       - /app/node_modules
     ports:
