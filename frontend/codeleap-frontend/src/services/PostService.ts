@@ -17,7 +17,6 @@ class PostService {
     }
 
     async create(data: PostData) {
-        console.log("JSON que o Axios está disparando:", JSON.stringify(data));
         return await api.post(this.endpoint, data);
     }
 

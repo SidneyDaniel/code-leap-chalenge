@@ -5,7 +5,7 @@ interface ButtonProps {
     onClick?: () => void;
     disabled: boolean;
     type?: "button" | "submit";
-    variant?: 'primary' | 'black' | 'white';
+    variant?: 'primary' | 'black' | 'white' | 'success' | 'danger' | 'outline';
     width?: string;
 }
 
@@ -14,7 +14,10 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, disabled, type = "butto
   const variants = {
     primary: "bg-codeleap-blue text-white",
     black: "bg-black text-white",
-    white: "bg-white text-black border border-codeleap-gray"
+    white: "bg-white text-black border border-codeleap-gray",
+    success: "bg-codeleap-green text-codeleap-white",
+    danger: "bg-codeleap-red text-codeleap-white",
+    outline: "bg-none text-codeleap-black border border-codeleap-black"
   };
 
   return (

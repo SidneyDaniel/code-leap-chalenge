@@ -8,7 +8,7 @@ import { SquarePen, Trash } from 'lucide-react';
 
 interface PostCardProps {
   post: PostData;
-  onDelete: (id: number) => void;
+  onDelete: (post: PostData) => void;
   onEdit: (post: PostData) => void;
 }
 
@@ -26,7 +26,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, onDelete, onEdit }) => {
         {isOwner && (
           <div className="flex gap-6 shrink-0">
             <button 
-              onClick={() => post.id && onDelete(post.id)} 
+              onClick={() => onDelete(post)} 
               className="hover:opacity-70 transition-opacity"
             >
               <Trash color="white" size={30} strokeWidth={3} />
