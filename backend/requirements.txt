@@ -8,3 +8,5 @@ django-cors-headers==4.9.0
 # Conexão com Supabase/Postgres
 psycopg[binary]==3.2.3
 dj-database-url==2.3.0
+
+python-dotenv==1.2.1
