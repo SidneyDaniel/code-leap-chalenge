@@ -14,7 +14,7 @@ const Field: React.FC<FieldProps> = ({ label, value, onChange, placeholder, id, 
 
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="text-black text-base font-normal">
+      <label htmlFor={id} className="text-black font-normal">
         {label}
       </label>
       
