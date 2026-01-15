@@ -11,6 +11,7 @@ import Modal from '../components/Modal';
 
 import { logout } from '../store/userSlice';
 import type { PostData } from '../services/PostService';
+import { LogOut } from 'lucide-react';
 
 const MainScreen: React.FC = () => {
   const username = useAppSelector((state) => state.user.username);
@@ -68,18 +69,20 @@ const MainScreen: React.FC = () => {
   const isButtonDisabled = !title.trim() || !content.trim() || loading;
 
   return (
-    <div className="min-h-screen bg-codeleap-light-gray flex flex-col items-center">
-      <header className="w-full max-w-200 bg-codeleap-blue h-20 flex items-center justify-between px-9 shrink-0">
+    <div className="min-h-screen my-2 max-[490px]:my-0 flex flex-col items-center">
+      <header className="w-full max-w-200 rounded-t-lg bg-codeleap-blue h-20 flex items-center justify-between px-9 shrink-0">
         <h1 className="text-white font-bold">CodeLeap Network</h1>
 
         <Button
-          label={"Sair"}
           onClick={() => dispatch(logout())}
           disabled={false}
-        />
+          width='20px'
+        >
+           <LogOut color="white" size={22} strokeWidth={3} />
+        </Button>
       </header>
 
-      <main className="w-full max-w-200 bg-white p-6 space-y-6 min-h-[calc(100vh-80px)] shadow-lg">
+      <main className="w-full max-w-200 rounded-b-lg border border-gray-200 bg-white p-6 max-[490px]:p-3 space-y-6 min-h-[calc(100vh-80px)] shadow-lg">
         <section className="border border-codeleap-border p-6 rounded-2xl flex flex-col gap-6">
           <h2 className="font-bold text-codeleap-black">
             What’s on your mind?

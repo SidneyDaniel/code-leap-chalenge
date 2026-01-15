@@ -1,15 +1,16 @@
 import React from "react";
 
 interface ButtonProps {
-    label: string;
+    label?: string;
     onClick?: () => void;
     disabled: boolean;
     type?: "button" | "submit";
     variant?: 'primary' | 'black' | 'white' | 'success' | 'danger' | 'outline';
     width?: string;
+    children?: React.ReactNode
 }
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, disabled, type = "button", variant = 'primary', width }) => {
+const Button: React.FC<ButtonProps> = ({ label, onClick, disabled, type = "button", variant = 'primary', width , children}) => {
   
   const variants = {
     primary: "bg-codeleap-blue text-white",
@@ -33,6 +34,7 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, disabled, type = "butto
       `}
     >
       {label}
+      {children}
     </button>
   );
 };
