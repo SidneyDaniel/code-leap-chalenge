@@ -6,7 +6,7 @@ function App() {
   const username = useAppSelector((state) => state.user.username);
 
   return (
-    <div className="min-h-screen min-w-screen bg-codeleap-light-gray">
+    <div className="min-h-screen min-w-[90vw] ">
       {!username ? ( <Signup /> ) : (
         <MainScreen/>
       )}
