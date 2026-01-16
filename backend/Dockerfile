@@ -12,18 +12,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN adduser --disabled-password --no-create-home appuser
 
-RUN --mount=type=cache,target=/root/.cache/pip \
-    --mount=type=bind,source=requirements.txt,target=requirements.txt \
-    python -m pip install -r requirements.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY --chown=appuser:appuser . .
 
+RUN python manage.py collectstatic --noinput
+
 USER appuser
 
-EXPOSE 8000
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
+CMD gunicorn config.wsgi:application --bind 0.0.0.0:$PORT
 
 
 
