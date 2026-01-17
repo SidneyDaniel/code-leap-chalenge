@@ -1,20 +1,19 @@
 # syntax=docker/dockerfile:1
 ARG NODE_VERSION=22.11.0-slim
 
-FROM node:${NODE_VERSION} AS dev
-
+FROM node:${NODE_VERSION} AS build
 WORKDIR /app
 
-# Caminho relativo ao contexto ./frontend
-COPY codeleap-frontend/package.json codeleap-frontend/package-lock.json ./
+COPY codeleap-frontend/package*.json ./
+RUN npm install
+COPY codeleap-frontend/ ./
+RUN npm run build
 
-RUN --mount=type=cache,target=/root/.npm npm install
+FROM node:${NODE_VERSION}
+WORKDIR /app
 
-# Copia o restante do código
-COPY --chown=node:node codeleap-frontend/ ./
+RUN npm install -g serve
 
-USER node
+COPY --from=build /app/dist ./dist
 
-EXPOSE 5173
-
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+CMD serve -s dist -l $PORT
