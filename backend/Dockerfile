@@ -21,7 +21,7 @@ RUN python manage.py collectstatic --noinput
 
 USER appuser
 
-CMD gunicorn config.wsgi:application --bind 0.0.0.0:$PORT
+CMD gunicorn codeleap_backend.wsgi:application --bind 0.0.0.0:$PORT
 
 
 
